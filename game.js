@@ -1,3 +1,26 @@
+class Road
+{
+    constructor(image, y)
+    {
+        this.x = 0;
+        this.y = y;
+ 
+        this.image = new Image();
+        
+        this.image.src = image;
+    }
+ 
+    Update(road) 
+    {
+        this.y += speed; //При обновлении изображение смещается вниз
+ 
+        if(this.y > window.innerHeight) //Если изображение ушло за край холста, то меняем положение
+        {
+            this.y = road.y - this.image.height + speed; //Новое положение указывается с учётом второго фона
+        }
+    }
+}
+
 var canvas = document.getElementById("canvas"); //Получение холста из DOM
 var ctx = canvas.getContext("2d"); //Получение контекста — через него можно работать с холстом
  
@@ -79,26 +102,5 @@ function Resize()
     canvas.height = window.innerHeight;
 }
 
-class Road
-{
-    constructor(image, y)
-    {
-        this.x = 0;
-        this.y = y;
- 
-        this.image = new Image();
-        
-        this.image.src = image;
-    }
- 
-    Update(road) 
-    {
-        this.y += speed; //При обновлении изображение смещается вниз
- 
-        if(this.y > window.innerHeight) //Если изображение ушло за край холста, то меняем положение
-        {
-            this.y = road.y - this.image.height + speed; //Новое положение указывается с учётом второго фона
-        }
-    }
-}
+
 
